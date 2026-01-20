@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta property="og:site_name" content="Garibaldi Atelier" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Booking" />
+
+    <title>Booking | Garibaldi Atelier</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="generator" content="Concrete CMS" />
+    <meta
+      name="msapplication-TileImage"
+      content="/application/themes/garibaldi/img/logo/garibaldi-logo-signet.png"
+    />
+    <link
+      rel="shortcut icon"
+      href="/application/themes/garibaldi/img/logo/garibaldi-logo-signet.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="/application/themes/garibaldi/img/logo/garibaldi-logo-signet.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/application/themes/garibaldi/img/logo/garibaldi-logo-signet.png"
+    />
+    <link rel="canonical" href="/booking.html" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <script
+      type="text/javascript"
+      src="/updates/concrete-cms-9.4.7-remote-updater/concrete/js/jquery.js?ccm_nocache=d91761d85011f8107a9fe646d6fac1683e015711"
+    ></script>
+    <link rel="stylesheet" href="https://use.typekit.net/hlh1zpv.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/application/themes/garibaldi/css/bootstrap.min.css"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/application/themes/garibaldi/addons/tinySlider/tiny-slider.css"
+      media="screen"
+    />
+    <link
+      href="/application/files/cache/css/garibaldi/presets/main.css?ts=1765291655"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/application/files/cache/css/garibaldi/presets/responsive.css?ts=1765291655"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      #wrapper {
+        overflow: visible;
+      }
+      #teaser {
+        height: auto;
+      }
+      .booking-section {
+        padding: 160px 0 120px;
+      }
+      .booking-grid {
+        display: flex;
+        gap: 30px;
+        align-items: stretch;
+        flex-wrap: wrap;
+      }
+      .booking-card {
+        background: #152323;
+        border: 1px solid rgba(211, 153, 105, 0.35);
+        padding: 24px;
+        flex: 1 1 360px;
+      }
+      .calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .calendar-title {
+        font: 300 18px "Nord";
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #d39969;
+      }
+      .cal-nav {
+        border: 1px solid rgba(211, 153, 105, 0.5);
+        background: transparent;
+        color: #d39969;
+        padding: 6px 12px;
+      }
+      .calendar-weekdays,
+      .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .calendar-weekdays div {
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .calendar-days button {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: transparent;
+        color: #fff;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .calendar-days button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .calendar-days button.is-selected {
+        background: #d39969;
+        color: #1f2d2d;
+        border-color: #d39969;
+      }
+      .calendar-days .empty {
+        border: 1px solid transparent;
+      }
+      .calendar-note {
+        margin-top: 16px;
+        font-size: 13px;
+        opacity: 0.6;
+      }
+      .booking-form label {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 14px 0 6px;
+      }
+      .booking-form input,
+      .booking-form select,
+      .booking-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        background: #1f2d2d;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+      .booking-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .booking-actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .booking-actions .btn {
+        border: 1px solid #d39969;
+        background: transparent;
+        color: #d39969;
+        padding: 10px 18px;
+      }
+      .booking-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+      .booking-modal.is-visible {
+        display: flex;
+      }
+      .booking-modal .modal-card {
+        background: #152323;
+        border: 1px solid rgba(211, 153, 105, 0.4);
+        padding: 24px;
+        width: min(520px, 92vw);
+      }
+      .booking-modal .modal-card h3 {
+        margin-top: 0;
+        color: #d39969;
+      }
+      .booking-summary {
+        white-space: pre-line;
+        font-size: 14px;
+        opacity: 0.8;
+        margin: 12px 0 20px;
+      }
+      @media (max-width: 767px) {
+        .booking-section {
+          padding: 120px 0 80px;
+        }
+        .calendar-days button {
+          aspect-ratio: auto;
+          padding: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" class="ccm-page page-type-page">
+      <div id="teaser">
+        <div id="navigation">
+          <div class="container">
+            <div class="logo">
+              <a href="/en.html">
+                <img
+                  src="/application/themes/garibaldi/img/logo/garibaldi-logo-signet.png"
+                  alt="Garibaldi Atelier"
+                  width="80"
+                  height="80"
+                  class="img-responsive"
+                />
+              </a>
+            </div>
+            <div class="nav">
+              <div class="ccm-block-switch-language">
+                <form method="post">
+                  <div class="lang-icon">
+                    <span class="icon icon-globe"></span>
+                  </div>
+                  <div class="lang-choice">
+                    <a href="/prenota.html" title="Italiano">IT</a>
+                    <a
+                      href="/booking.html"
+                      title="English"
+                      class="last ccm-block-switch-language-active-flag"
+                      >EN</a
+                    >
+                  </div>
+                </form>
+              </div>
+              <a href="/en.html" class="btn">
+                <span class="name">Home</span>
+                <span class="icon icon-arrow-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <section class="gradient-circle-right-top">
+          <div class="inner">
+            <div class="container booking-section">
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                  <h1 style="text-align: center; opacity: 1;">
+                    Book your table
+                  </h1>
+                  <p style="text-align: center;">
+                    Send your request and select your preferred time.
+                  </p>
+                </div>
+              </div>
+              <div class="spacer"></div>
+              <div class="booking-grid">
+                <div class="booking-card">
+                  <div class="calendar-header">
+                    <button class="cal-nav" type="button" data-dir="-1">
+                      &lsaquo;
+                    </button>
+                    <div class="calendar-title" id="calendar-title"></div>
+                    <button class="cal-nav" type="button" data-dir="1">
+                      &rsaquo;
+                    </button>
+                  </div>
+                  <div class="calendar-weekdays">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                  </div>
+                  <div class="calendar-days" id="calendar-days"></div>
+                  <p class="calendar-note">
+                    Hours: Mon–Sat 07:00–00:00. Sunday closed.
+                  </p>
+                </div>
+                <div class="booking-card">
+                  <form class="booking-form" id="booking-form">
+                    <label for="booking-name">Full name</label>
+                    <input id="booking-name" type="text" required />
+
+                    <label for="booking-phone">Phone</label>
+                    <input id="booking-phone" type="tel" required />
+
+                    <label for="booking-email">Email (optional)</label>
+                    <input id="booking-email" type="email" />
+
+                    <label for="booking-people">Party size</label>
+                    <select id="booking-people" required>
+                      <option value="">Select</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+
+                    <label for="booking-date">Date</label>
+                    <input id="booking-date" type="text" readonly required />
+
+                    <label for="booking-time">Time</label>
+                    <select id="booking-time" required></select>
+
+                    <label for="booking-note">Special requests</label>
+                    <textarea id="booking-note"></textarea>
+
+                    <div class="booking-actions">
+                      <button class="btn" type="submit">Send request</button>
+                      <button class="btn" type="reset">Reset</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 distance-sm">
+              <div class="footer-logo">
+                <img
+                  src="/application/themes/garibaldi/img/logo/GaribaldiAtelierCaffe.png"
+                  alt="Garibaldi Atelier"
+                  width="203"
+                  height="27"
+                  class="img-responsive"
+                />
+              </div>
+              <br />
+              <p class="small">&copy;2026 Garibaldi Atelier</p>
+            </div>
+            <div class="col-sm-4 distance-sm">
+              <div class="footer-info">
+                <p>Corso Italia, 49</p>
+                <p>34170 Gorizia, Italy</p>
+              </div>
+            </div>
+            <div class="col-sm-4 distance-sm">
+              <div class="footer-links">
+                <p>
+                  <a href="/en/imprint.html">Imprint</a>
+                </p>
+                <p>
+                  <a href="/en/data-protection.html">Privacy</a>
+                </p>
+                <div class="footer-social">
+                  <a
+                    href="https://www.instagram.com/garibaldi_atelier"
+                    class="social-icon"
+                    aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM12 2c2.7 0 3 .01 4.06.06 1.04.05 1.75.22 2.37.46.64.25 1.18.59 1.7 1.11.52.52.86 1.06 1.11 1.7.24.62.41 1.33.46 2.37.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.04-.22 1.75-.46 2.37-.25.64-.59 1.18-1.11 1.7-.52.52-1.06.86-1.7 1.11-.62.24-1.33.41-2.37.46-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.04-.05-1.75-.22-2.37-.46a4.8 4.8 0 0 1-2.81-2.81c-.24-.62-.41-1.33-.46-2.37C2.01 15 2 14.7 2 12s.01-3 .06-4.06c.05-1.04.22-1.75.46-2.37a4.8 4.8 0 0 1 2.81-2.81c.62-.24 1.33-.41 2.37-.46C9 2.01 9.3 2 12 2Zm0-2C9.27 0 8.94.01 7.88.06 6.78.11 5.87.3 5.07.61a6.6 6.6 0 0 0-2.4 1.57A6.6 6.6 0 0 0 .61 5.07C.3 5.87.11 6.78.06 7.88.01 8.94 0 9.27 0 12s.01 3.06.06 4.12c.05 1.1.24 2.01.55 2.81a6.6 6.6 0 0 0 1.57 2.4 6.6 6.6 0 0 0 2.4 1.57c.8.31 1.71.5 2.81.55 1.06.05 1.39.06 4.12.06s3.06-.01 4.12-.06c1.1-.05 2.01-.24 2.81-.55a6.6 6.6 0 0 0 2.4-1.57 6.6 6.6 0 0 0 1.57-2.4c.31-.8.5-1.71.55-2.81.05-1.06.06-1.39.06-4.12s-.01-3.06-.06-4.12c-.05-1.1-.24-2.01-.55-2.81a6.6 6.6 0 0 0-1.57-2.4A6.6 6.6 0 0 0 18.93.61C18.13.3 17.22.11 16.12.06 15.06.01 14.73 0 12 0Z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61577913196120"
+                    class="social-icon"
+                    aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M13.9 24v-9.3h3.1l.6-3.6h-3.7V8.7c0-1 .3-1.7 1.8-1.7h2V3.8c-.4-.1-1.6-.2-3-.2-2.9 0-4.9 1.8-4.9 5.1V11H6.7v3.6h3.2V24h4Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+    <div id="cursor">
+      <div class="cursor-circle circle-big">
+        <svg height="30" width="30" class="default-cursor">
+          <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+        </svg>
+
+        <svg
+          width="60"
+          height="60"
+          viewBox="0 0 60 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="arrow-cursor"
+        >
+          <circle cx="30" cy="30" r="30" fill="#D29969" />
+          <path
+            d="M33.5203 22.2998C33.5203 22.2998 38.9936 30.9998 46 30.9998C38.9936 30.9998 33.5203 39.6998 33.5203 39.6998"
+            stroke="#1F2D2D"
+            stroke-miterlimit="10"
+          />
+          <path
+            d="M43.9081 31.0112H17"
+            stroke="#1F2D2D"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+      <div class="cursor-circle circle-small">
+        <svg height="10" width="10">
+          <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="booking-modal" id="booking-modal" aria-hidden="true">
+      <div class="modal-card">
+        <h3>Request saved</h3>
+        <p>We will contact you soon to confirm availability.</p>
+        <div class="booking-summary" id="booking-summary"></div>
+        <div class="booking-actions">
+          <button class="btn" type="button" id="booking-copy">Copy text</button>
+          <button class="btn" type="button" id="booking-close">Close</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const calendarTitle = document.getElementById("calendar-title");
+        const calendarDays = document.getElementById("calendar-days");
+        const dateInput = document.getElementById("booking-date");
+        const timeSelect = document.getElementById("booking-time");
+        const form = document.getElementById("booking-form");
+        const modal = document.getElementById("booking-modal");
+        const summaryEl = document.getElementById("booking-summary");
+        const closeBtn = document.getElementById("booking-close");
+        const copyBtn = document.getElementById("booking-copy");
+
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
+        let viewDate = new Date();
+        viewDate.setDate(1);
+        let selectedDate = null;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        function isSunday(date) {
+          return date.getDay() === 0;
+        }
+
+        function formatDate(date) {
+          const dd = String(date.getDate()).padStart(2, "0");
+          const mm = String(date.getMonth() + 1).padStart(2, "0");
+          const yyyy = date.getFullYear();
+          return `${dd}/${mm}/${yyyy}`;
+        }
+
+        function buildCalendar() {
+          calendarDays.innerHTML = "";
+          const year = viewDate.getFullYear();
+          const month = viewDate.getMonth();
+          calendarTitle.textContent = `${monthNames[month]} ${year}`;
+
+          const first = new Date(year, month, 1);
+          const offset = (first.getDay() + 6) % 7;
+          const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+          for (let i = 0; i < offset; i += 1) {
+            const empty = document.createElement("div");
+            empty.className = "empty";
+            calendarDays.appendChild(empty);
+          }
+
+          for (let day = 1; day <= daysInMonth; day += 1) {
+            const date = new Date(year, month, day);
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = day;
+
+            if (date < today || isSunday(date)) {
+              button.disabled = true;
+            }
+
+            if (
+              selectedDate &&
+              date.getFullYear() === selectedDate.getFullYear() &&
+              date.getMonth() === selectedDate.getMonth() &&
+              date.getDate() === selectedDate.getDate()
+            ) {
+              button.classList.add("is-selected");
+            }
+
+            button.addEventListener("click", () => {
+              selectedDate = date;
+              dateInput.value = formatDate(date);
+              updateTimeOptions();
+              buildCalendar();
+            });
+            calendarDays.appendChild(button);
+          }
+        }
+
+        function updateTimeOptions() {
+          timeSelect.innerHTML = "";
+          if (!selectedDate) {
+            const option = document.createElement("option");
+            option.textContent = "Select a date";
+            option.value = "";
+            option.selected = true;
+            option.disabled = true;
+            timeSelect.appendChild(option);
+            return;
+          }
+
+          if (isSunday(selectedDate)) {
+            const option = document.createElement("option");
+            option.textContent = "Sunday closed";
+            option.value = "";
+            option.selected = true;
+            option.disabled = true;
+            timeSelect.appendChild(option);
+            return;
+          }
+
+          const now = new Date();
+          const isToday =
+            selectedDate.getFullYear() === now.getFullYear() &&
+            selectedDate.getMonth() === now.getMonth() &&
+            selectedDate.getDate() === now.getDate();
+
+          for (let hour = 7; hour < 24; hour += 1) {
+            for (let minute = 0; minute < 60; minute += 30) {
+              const slot = `${String(hour).padStart(2, "0")}:${String(
+                minute
+              ).padStart(2, "0")}`;
+              const option = document.createElement("option");
+              option.value = slot;
+              option.textContent = slot;
+              if (isToday) {
+                const slotTime = new Date(selectedDate);
+                slotTime.setHours(hour, minute, 0, 0);
+                if (slotTime < now) {
+                  option.disabled = true;
+                }
+              }
+              timeSelect.appendChild(option);
+            }
+          }
+        }
+
+        function showModal(summary) {
+          summaryEl.textContent = summary;
+          modal.classList.add("is-visible");
+          modal.setAttribute("aria-hidden", "false");
+        }
+
+        function hideModal() {
+          modal.classList.remove("is-visible");
+          modal.setAttribute("aria-hidden", "true");
+        }
+
+        document.querySelectorAll(".cal-nav").forEach((button) => {
+          button.addEventListener("click", () => {
+            const dir = Number(button.getAttribute("data-dir"));
+            viewDate.setMonth(viewDate.getMonth() + dir);
+            buildCalendar();
+          });
+        });
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!dateInput.value || !timeSelect.value) {
+            return;
+          }
+
+          const data = {
+            name: document.getElementById("booking-name").value.trim(),
+            phone: document.getElementById("booking-phone").value.trim(),
+            email: document.getElementById("booking-email").value.trim(),
+            people: document.getElementById("booking-people").value,
+            date: dateInput.value,
+            time: timeSelect.value,
+            note: document.getElementById("booking-note").value.trim(),
+            createdAt: new Date().toISOString(),
+          };
+
+          const summary = [
+            `Name: ${data.name}`,
+            `Phone: ${data.phone}`,
+            data.email ? `Email: ${data.email}` : null,
+            `Party size: ${data.people}`,
+            `Date: ${data.date}`,
+            `Time: ${data.time}`,
+            data.note ? `Notes: ${data.note}` : null,
+          ]
+            .filter(Boolean)
+            .join("\\n");
+
+          const stored = JSON.parse(
+            localStorage.getItem("garibaldiBookings") || "[]"
+          );
+          stored.push(data);
+          localStorage.setItem("garibaldiBookings", JSON.stringify(stored));
+
+          showModal(summary);
+          form.reset();
+          dateInput.value = "";
+          selectedDate = null;
+          updateTimeOptions();
+          buildCalendar();
+        });
+
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            hideModal();
+          }
+        });
+        closeBtn.addEventListener("click", hideModal);
+        copyBtn.addEventListener("click", () => {
+          const text = summaryEl.textContent;
+          if (navigator.clipboard && text) {
+            navigator.clipboard.writeText(text);
+            copyBtn.textContent = "Copied";
+            setTimeout(() => {
+              copyBtn.textContent = "Copy text";
+            }, 2000);
+          }
+        });
+
+        buildCalendar();
+        updateTimeOptions();
+      })();
+    </script>
+    <script src="/application/themes/garibaldi/addons/tinySlider/tiny-slider.js"></script>
+    <script src="/application/themes/garibaldi/js/gsap.min.js"></script>
+    <script src="/application/themes/garibaldi/js/ScrollTrigger.min.js"></script>
+    <script src="/application/themes/garibaldi/js/ScrollSmoother.min.js"></script>
+    <script src="/application/themes/garibaldi/js/SplitText.min.js"></script>
+    <script src="/application/themes/garibaldi/js/main.js"></script>
+  </body>
+</html>

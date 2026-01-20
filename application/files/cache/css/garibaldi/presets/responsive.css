@@ -1,0 +1,309 @@
+@media (min-width: 1500px) {
+  .container {
+    width: 1460px;
+  }
+}
+@media (max-width: 1500px) {
+  .container-offset-left {
+    margin-left: calc(50% - (1170px / 2));
+    padding-left: 95px;
+  }
+  .text-area {
+    padding: 100px;
+  }
+  .green-box {
+    padding: 140px 100px 100px 100px;
+  }
+  .before-gallery-style-1 {
+    margin-left: 95px;
+  }
+  .highlight {
+    height: 150px;
+  }
+  .highlight.diff {
+    top: -75px;
+    margin-left: 95px;
+  }
+  .gallery.style-1 {
+    margin: 0 -10px;
+  }
+  .gallery.style-1 .item {
+    padding: 0 10px;
+  }
+  .gallery.style-3 {
+    margin: 0 -10px;
+  }
+  .gallery.style-3 .item {
+    padding: 0 10px;
+  }
+  .gallery-wrapper .line {
+    left: -47.5px;
+  }
+  .margin-image {
+    margin-left: -20px;
+  }
+  .speisen-infos {
+    margin-left: 160px;
+  }
+}
+@media (max-width: 1200px) {
+  .distance-lg {
+    padding-bottom: 30px;
+  }
+  .text-area {
+    padding: 80px;
+  }
+  .green-box {
+    padding: 120px 80px 80px 80px;
+  }
+  .margin-image {
+    margin-left: 0;
+  }
+  .container-offset-left {
+    margin-left: calc(50% - (970px / 2));
+  }
+  .highlight {
+    height: 125px;
+  }
+  .highlight.diff {
+    top: -62.5px;
+  }
+  .gallery-wrapper .line {
+    left: -45px;
+  }
+  .gallery-wrapper {
+    margin-bottom: 60px;
+  }
+  .gallery.style-2 .item-2 {
+    bottom: -30px;
+    left: 30px;
+  }
+  .gallery.style-2 .item-3 {
+    bottom: -60px;
+    left: 60px;
+  }
+  .gallery.style-2 .item-4 {
+    bottom: -90px;
+    left: 90px;
+  }
+  .gallery.style-3 .item.portrait {
+    width: 35%;
+  }
+  .gallery.style-3 .item.landscape {
+    width: 59%;
+  }
+  .gallery.style-3 .item.square {
+    width: 41%;
+  }
+}
+@media (max-width: 991px) {
+  .distance-md {
+    padding-bottom: 30px;
+  }
+  .text-area {
+    padding: 60px;
+    margin: auto;
+    width: 100%;
+  }
+  .green-box {
+    padding: 100px 60px 60px 60px;
+  }
+  .container-offset-left {
+    margin-left: calc(50% - (750px / 2));
+    padding-left: 75px;
+  }
+  .highlight {
+    height: 75px;
+  }
+  .highlight.diff {
+    top: -37.5px;
+    margin-left: 75px;
+  }
+  .speisen-infos {
+    margin-left: 140px;
+  }
+  .gallery-wrapper .line {
+    left: -37.5px;
+  }
+  .table {
+    width: 100%;
+  }
+  .table.break-md {
+    display: block;
+    width: auto;
+  }
+  .table.break-md .table-cell {
+    display: block;
+    width: 100%;
+  }
+  .table .table-cell.background-image {
+    height: 400px;
+  }
+}
+@media (max-width: 767px) {
+  .distance-sm {
+    padding-bottom: 30px;
+  }
+  .make-margin-767 {
+    margin-bottom: 30px;
+  }
+  .gallery-wrapper .line {
+    width: auto;
+    height: 1px;
+    bottom: -50px;
+    top: auto;
+    left: 30px;
+    right: 15px;
+    z-index: 11;
+    flex-direction: unset;
+  }
+  .gallery-wrapper .line .dot {
+    width: 5px;
+    height: 5px;
+  }
+  .gallery-wrapper .line .dot.active {
+    width: 10px;
+    height: 10px;
+  }
+  .before-gallery-style-1 {
+    margin: 0 0 0 0;
+  }
+  .gallery.style-1 {
+    margin: 0 7.5px;
+    padding-right: 7.5px;
+  }
+  .gallery.style-1 .item {
+    padding: 0 7.5px;
+  }
+  .gallery.style-1 .item.landscape {
+    width: 90%;
+    max-width: 400px;
+  }
+  .gallery.style-1 .item.portrait {
+    width: 53%;
+    max-width: 210px;
+    min-width: 160px;
+  }
+  .gallery-wrapper {
+    margin-bottom: 30px;
+  }
+  .gallery.style-2 .item-2 {
+    bottom: -15px;
+    left: 15px;
+  }
+  .gallery.style-2 .item-3 {
+    bottom: -30px;
+    left: 30px;
+  }
+  .gallery.style-2 .item-4 {
+    bottom: -45px;
+    left: 45px;
+  }
+  .gallery.style-3 {
+    margin: 0 -5px;
+  }
+  .gallery.style-3 .item {
+    padding: 0 5px;
+  }
+  .gallery.style-3 .item.landscape {
+    width: 70%;
+  }
+  .gallery.style-3 .item.square {
+    width: 47%;
+  }
+  .gallery.style-3 .item.portrait {
+    width: 45%;
+  }
+  .awards {
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  .footer-links {
+    text-align: center;
+  }
+  .footer-social {
+    justify-content: flex-start;
+  }
+  .awards .award {
+    flex: 0 0 60px;
+  }
+  .text-area {
+    padding: 30px 15px 0 15px;
+    width: auto;
+  }
+  .green-box {
+    padding: 60px 30px 30px 30px;
+  }
+  .green-box .header-logo {
+    width: 60px;
+    top: -30px;
+  }
+  .table {
+    width: 100%;
+  }
+  .table.break-sm {
+    display: block;
+    width: auto;
+  }
+  .table.break-sm .table-cell {
+    display: block;
+    width: 100%;
+  }
+  .gallery.style-1 {
+    margin: 0 -5px;
+  }
+  .gallery.style-1 .item {
+    padding: 0 5px;
+  }
+  .speisen-infos {
+    margin: 0 -15px;
+  }
+  .highlight {
+    height: 75px;
+  }
+  .highlight.diff {
+    top: -37.5px;
+    margin-left: 8.33333333%;
+  }
+  .container-offset-left {
+    width: 100%;
+    padding: 0 0 0 15px;
+    margin: 0;
+  }
+  .gradient-circle-right-center:after {
+    top: -25%;
+  }
+  .gradient-circle-left-center:after {
+    top: -25%;
+  }
+  .gradient-circle-right-top:after {
+    top: -25%;
+  }
+  #footer .footer-info,
+  #footer .footer-links {
+    text-align: left;
+  }
+  #navigation .logo {
+    width: 60px;
+  }
+  #navigation .nav {
+    padding: 7px 0 0 0;
+  }
+  body {
+    cursor: default !important;
+  }
+  #cursor {
+    display: none !important;
+  }
+}
+@media (max-width: 380px) {
+  .ccm-block-switch-language {
+    display: block;
+    text-align: right;
+    margin: 0 0 10px 0;
+  }
+  #navigation .nav {
+    padding: 0;
+  }
+}
