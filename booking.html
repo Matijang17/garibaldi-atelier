@@ -205,9 +205,34 @@
         .booking-section {
           padding: 120px 0 80px;
         }
+        .booking-grid {
+          flex-direction: column;
+        }
+        .booking-card {
+          flex: 1 1 auto;
+          width: 100%;
+        }
+        .calendar-header {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .calendar-weekdays,
+        .calendar-days {
+          gap: 4px;
+        }
         .calendar-days button {
           aspect-ratio: auto;
           padding: 10px 0;
+          font-size: 12px;
+        }
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+          font-size: 14px;
+        }
+        .booking-actions .btn {
+          width: 100%;
+          text-align: center;
         }
       }
     </style>
@@ -351,8 +376,7 @@
                 />
               </div>
               <br />
-              <p class="small">&copy;2026 Garibaldi Atelier</p>
-            </div>
+                          </div>
             <div class="col-sm-4 distance-sm">
               <div class="footer-info">
                 <p>Corso Italia, 49</p>
@@ -399,6 +423,18 @@
             </div>
             <div class="clear"></div>
           </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="footer-credit">
+                  <span class="footer-copy">&copy;2026 Garibaldi Atelier</span>
+                  <span class="footer-sep">|</span>
+                  <span>Interior design by</span>
+                  <a href="https://123hiska.si/" target="_blank" rel="noopener">
+                    <img src="/application/themes/garibaldi/img/hiska_logo.png" alt="Hiska" />
+                  </a>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       <div class="spacer"></div>
