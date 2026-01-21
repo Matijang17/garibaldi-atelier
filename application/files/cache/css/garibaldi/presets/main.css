@@ -845,6 +845,22 @@ body {
   text-decoration: none;
   background: none;
 }
+.footer-info a,
+.footer-info a:hover,
+.footer-info a:focus {
+  color: #d39969;
+  text-decoration: none;
+}
+.footer-info a:visited,
+.footer-info a:active,
+.footer-contact-link,
+.footer-contact-link:hover,
+.footer-contact-link:focus,
+.footer-contact-link:visited,
+.footer-contact-link:active {
+  color: #d39969;
+  text-decoration: none;
+}
 .footer-social {
   display: flex;
   justify-content: flex-end;
