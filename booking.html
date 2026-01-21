@@ -317,18 +317,23 @@
                   </p>
                 </div>
                 <div class="booking-card">
-                  <form class="booking-form" id="booking-form">
+                  <form
+                    class="booking-form"
+                    id="booking-form"
+                    method="post"
+                    action="/booking.php"
+                  >
                     <label for="booking-name">Full name</label>
-                    <input id="booking-name" type="text" required />
+                    <input id="booking-name" name="name" type="text" required />
 
                     <label for="booking-phone">Phone</label>
-                    <input id="booking-phone" type="tel" required />
+                    <input id="booking-phone" name="phone" type="tel" required />
 
                     <label for="booking-email">Email (optional)</label>
-                    <input id="booking-email" type="email" />
+                    <input id="booking-email" name="email" type="email" />
 
                     <label for="booking-people">Party size</label>
-                    <select id="booking-people" required>
+                    <select id="booking-people" name="people" required>
                       <option value="">Select</option>
                       <option>1</option>
                       <option>2</option>
@@ -343,13 +348,14 @@
                     </select>
 
                     <label for="booking-date">Date</label>
-                    <input id="booking-date" type="text" readonly required />
+                    <input id="booking-date" name="date" type="text" readonly required />
 
                     <label for="booking-time">Time</label>
-                    <select id="booking-time" required></select>
+                    <select id="booking-time" name="time" required></select>
 
                     <label for="booking-note">Special requests</label>
-                    <textarea id="booking-note"></textarea>
+                    <textarea id="booking-note" name="note"></textarea>
+                    <input type="hidden" name="lang" value="en" />
 
                     <div class="booking-actions">
                       <button class="btn" type="submit">Send request</button>
@@ -642,7 +648,33 @@
           });
         });
 
-        form.addEventListener("submit", (event) => {
+        async function submitBooking(data) {
+          const payload = new URLSearchParams({
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            people: data.people,
+            date: data.date,
+            time: data.time,
+            note: data.note,
+            lang: "en",
+          });
+
+          const response = await fetch("/booking.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: payload.toString(),
+          });
+
+          const result = await response.json().catch(() => null);
+          if (!response.ok || !result || result.ok !== true) {
+            throw new Error((result && result.error) || "Send failed");
+          }
+        }
+
+        form.addEventListener("submit", async (event) => {
           event.preventDefault();
           if (!dateInput.value || !timeSelect.value) {
             return;
@@ -671,18 +703,17 @@
             .filter(Boolean)
             .join("\\n");
 
-          const stored = JSON.parse(
-            localStorage.getItem("garibaldiBookings") || "[]"
-          );
-          stored.push(data);
-          localStorage.setItem("garibaldiBookings", JSON.stringify(stored));
-
-          showModal(summary);
-          form.reset();
-          dateInput.value = "";
-          selectedDate = null;
-          updateTimeOptions();
-          buildCalendar();
+          try {
+            await submitBooking(data);
+            showModal(summary);
+            form.reset();
+            dateInput.value = "";
+            selectedDate = null;
+            updateTimeOptions();
+            buildCalendar();
+          } catch (error) {
+            showModal("Sending failed. Please try again or call us.");
+          }
         });
 
         modal.addEventListener("click", (event) => {
