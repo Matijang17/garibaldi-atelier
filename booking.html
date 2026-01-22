@@ -62,6 +62,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
       #wrapper {
         overflow: visible;
@@ -355,6 +356,10 @@
 
                     <label for="booking-note">Special requests</label>
                     <textarea id="booking-note" name="note"></textarea>
+                    <div
+                      class="g-recaptcha"
+                      data-sitekey="6LeLxVIsAAAAALyFcnyKbNs4ZjhOe94FY-w6DRE4"
+                    ></div>
                     <input type="hidden" name="lang" value="en" />
 
                     <div class="booking-actions">
@@ -658,6 +663,7 @@
             time: data.time,
             note: data.note,
             lang: "en",
+            "g-recaptcha-response": data.recaptcha,
           });
 
           const response = await fetch("/booking.php", {
@@ -688,8 +694,17 @@
             date: dateInput.value,
             time: timeSelect.value,
             note: document.getElementById("booking-note").value.trim(),
+            recaptcha:
+              window.grecaptcha && typeof window.grecaptcha.getResponse === "function"
+                ? window.grecaptcha.getResponse()
+                : "",
             createdAt: new Date().toISOString(),
           };
+
+          if (!data.recaptcha) {
+            showModal("Please confirm the reCAPTCHA before sending.");
+            return;
+          }
 
           const summary = [
             `Name: ${data.name}`,
@@ -707,6 +722,9 @@
             await submitBooking(data);
             showModal(summary);
             form.reset();
+            if (window.grecaptcha && typeof window.grecaptcha.reset === "function") {
+              window.grecaptcha.reset();
+            }
             dateInput.value = "";
             selectedDate = null;
             updateTimeOptions();
@@ -743,5 +761,28 @@
     <script src="/application/themes/garibaldi/js/ScrollSmoother.min.js"></script>
     <script src="/application/themes/garibaldi/js/SplitText.min.js"></script>
     <script src="/application/themes/garibaldi/js/main.js"></script>
-  </body>
+    <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>
+      This site uses essential cookies to ensure proper functionality.
+      <a href="/en/data-protection.html">Learn more</a>.
+    </span>
+    <div class="cookie-actions">
+      <button class="btn" id="cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const banner = document.getElementById("cookie-banner");
+      const accept = document.getElementById("cookie-accept");
+      if (!banner || !accept) return;
+      const key = "garibaldiCookieConsent";
+      if (localStorage.getItem(key)) return;
+      banner.classList.add("is-visible");
+      accept.addEventListener("click", function () {
+        localStorage.setItem(key, "accepted");
+        banner.classList.remove("is-visible");
+      });
+    })();
+  </script>
+</body>
 </html>

@@ -924,5 +924,28 @@
       type="text/javascript"
       src="/updates/concrete-cms-9.4.7-remote-updater/concrete/js/features/imagery/frontend.js?ccm_nocache=d91761d85011f8107a9fe646d6fac1683e015711"
     ></script>
-  </body>
+    <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>
+      This site uses essential cookies to ensure proper functionality.
+      <a href="/en/data-protection.html">Learn more</a>.
+    </span>
+    <div class="cookie-actions">
+      <button class="btn" id="cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const banner = document.getElementById("cookie-banner");
+      const accept = document.getElementById("cookie-accept");
+      if (!banner || !accept) return;
+      const key = "garibaldiCookieConsent";
+      if (localStorage.getItem(key)) return;
+      banner.classList.add("is-visible");
+      accept.addEventListener("click", function () {
+        localStorage.setItem(key, "accepted");
+        banner.classList.remove("is-visible");
+      });
+    })();
+  </script>
+</body>
 </html>
