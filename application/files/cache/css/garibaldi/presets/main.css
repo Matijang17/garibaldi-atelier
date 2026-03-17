@@ -43,6 +43,14 @@ html {
   font-display: swap;
 }
 @font-face {
+  font-family: "Metropolis";
+  src: url("/application/themes/garibaldi/fonts/metropolis-regular-webfont.woff2")
+      format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "fontello";
   src: url("/application/themes/garibaldi/icons/fontello.eot?22392238");
   src: url("/application/themes/garibaldi/icons/fontello.eot?22392238#iefix")
@@ -246,7 +254,7 @@ a:focus {
 body {
   background: #1f2d2d;
   color: #fff;
-  font: normal var(--font-size-normal) "Judson";
+  font: normal var(--font-size-normal) "Metropolis";
 }
 #wrapper {
   overflow: hidden;
