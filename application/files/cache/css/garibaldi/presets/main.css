@@ -44,7 +44,7 @@ html {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: never;
+  speak-as: never;
   display: inline-block;
   text-decoration: inherit;
   font-variant: normal;
