@@ -1,68 +1,40 @@
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: normal;
-  -webkit-overflow-scrolling: touch;
   font-size: 16px;
 }
 @font-face {
   font-family: "Valky";
-  src: url("/application/themes/garibaldi/fonts/valkyregular-webfont.woff2")
-      format("woff2"),
-    url("/application/themes/garibaldi/fonts/valkyregular-webfont.woff")
-      format("woff");
+  src: url("/application/themes/garibaldi/fonts/valkyregular-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nord";
-  src: url("/application/themes/garibaldi/fonts/NORD-Regular.woff2")
-      format("woff2"),
-    url("/application/themes/garibaldi/fonts/NORD-Regular.woff") format("woff");
+  src: url("/application/themes/garibaldi/fonts/NORD-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nord";
-  src: url("/application/themes/garibaldi/fonts/NORD-Light.woff2") format("woff2"),
-    url("/application/themes/garibaldi/fonts/NORD-Light.woff") format("woff");
+  src: url("/application/themes/garibaldi/fonts/NORD-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Judson";
-  src: url("/application/themes/garibaldi/fonts/Judson-Regular.woff2")
-      format("woff2"),
-    url("/application/themes/garibaldi/fonts/Judson-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "Metropolis";
-  src: url("/application/themes/garibaldi/fonts/metropolis-regular-webfont.woff2")
-      format("woff2");
+  src: url("/application/themes/garibaldi/fonts/metropolis-regular-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "fontello";
-  src: url("/application/themes/garibaldi/icons/fontello.eot?22392238");
-  src: url("/application/themes/garibaldi/icons/fontello.eot?22392238#iefix")
-      format("embedded-opentype"),
-    url("/application/themes/garibaldi/icons/fontello.woff2?22392238")
-      format("woff2"),
-    url("/application/themes/garibaldi/icons/fontello.woff?22392238")
-      format("woff"),
-    url("/application/themes/garibaldi/icons/fontello.ttf?22392238")
-      format("truetype"),
-    url("/application/themes/garibaldi/icons/fontello.svg?22392238#fontello")
-      format("svg");
+  src: url("/application/themes/garibaldi/icons/fontello.woff2?22392238") format("woff2"),
+    url("/application/themes/garibaldi/icons/fontello.woff?22392238") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -184,37 +156,18 @@ a:focus {
   margin-bottom: 30px !important;
 }
 .transformY {
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .notransformY {
-  -ms-transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -o-transform: none;
-}
-.img-fluid {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
+  transform: none;
 }
 .cover {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
 .animate {
-  -webkit-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -moz-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -o-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .round {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
 }
 .table {
@@ -239,9 +192,6 @@ a:focus {
   background: #000;
   position: relative;
   overflow: hidden;
-  -webkit-background-size: cover !important;
-  -moz-background-size: cover !important;
-  -o-background-size: cover !important;
   background-size: cover !important;
 }
 .table .table-cell.background-image .background-video {
@@ -339,10 +289,7 @@ body {
   margin: auto;
   display: block;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   color: #d39969;
 }
 #teaser .background_arrows .vegasSliderArrows {
@@ -351,10 +298,7 @@ body {
 #teaser .background_arrows .vegasSliderArrows .icon {
   cursor: pointer;
   position: absolute;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 #teaser .background_arrows .icon-arrow-right {
   right: 0;
@@ -365,10 +309,7 @@ body {
 #teaser .overlay-logo {
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 0;
   right: 0;
   padding: 0 30px;
@@ -560,11 +501,6 @@ body {
 }
 .before-gallery-style-1 .icon {
   position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   left: auto;
   background: #d39969;
   color: #1f2d2d;
@@ -573,25 +509,17 @@ body {
   line-height: 40px;
   text-align: center;
   z-index: 12;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   right: 15px;
   cursor: pointer;
   top: auto;
   bottom: 15px;
-  -ms-transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -o-transform: none;
+  transform: none;
 }
 .iconsstyle {
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   left: auto;
   background: #d39969;
   color: #1f2d2d;
@@ -600,8 +528,6 @@ body {
   line-height: 40px;
   text-align: center;
   z-index: 12;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   right: 15px;
   cursor: pointer;
@@ -633,10 +559,7 @@ body {
 .addiconresponsive .icon {
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   left: auto;
   background: #d39969;
   color: #1f2d2d;
@@ -645,8 +568,6 @@ body {
   line-height: 40px;
   text-align: center;
   z-index: 12;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   right: 15px;
   cursor: pointer;
@@ -659,10 +580,7 @@ body {
 .gallery-wrapper .icon {
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   left: auto;
   background: #d39969;
   color: #1f2d2d;
@@ -671,8 +589,6 @@ body {
   line-height: 40px;
   text-align: center;
   z-index: 12;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   right: 15px;
   cursor: pointer;
@@ -695,17 +611,12 @@ body {
   align-items: center;
 }
 .gallery-wrapper .line .dot {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   overflow: hidden;
   width: 10px;
   height: 10px;
   display: block;
   background: #d39969;
-  -webkit-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -moz-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -o-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .gallery-wrapper .line .dot.active {
@@ -727,9 +638,6 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -moz-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -o-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 6;
   left: -0;
@@ -937,7 +845,7 @@ body {
   color: #d39969;
   padding: 6px 12px;
 }
-@media  (max-width: 767px) {
+@media (max-width: 767px) {
   .footer-social {
     display: flex;
     justify-content: flex-start;
@@ -952,8 +860,6 @@ body {
     align-items: flex-start;
   }
 }
-
-
 .margin-image {
   margin-left: 11px;
 }
@@ -974,9 +880,6 @@ body {
 }
 .circle-big .default-cursor {
   opacity: 1;
-  -webkit-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -moz-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -o-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 2;
   left: 25px;
@@ -985,9 +888,6 @@ body {
 }
 .circle-big .arrow-cursor {
   opacity: 0;
-  -webkit-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -moz-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-  -o-transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 1;
   left: 10px;
