@@ -854,6 +854,14 @@ body {
   }
   .footer-credit {
     justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .footer-dev-sep {
+    display: none;
+  }
+  .footer-dev {
+    width: 100%;
+    margin-top: 4px;
   }
   .cookie-banner {
     flex-direction: column;
